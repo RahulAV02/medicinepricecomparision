@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Price Scraper</title>
+</head>
+<body>
+    <h1>Enter Medicine Details</h1>
+    <form action="/" method="post" id="medicine_form">
+        <label for="pharmacy">Select Pharmacy:</label>
+        <select id="pharmacy" name="pharmacy" required>
+            <option value="netmeds">NetMeds</option>
+            <option value="pharmeasy">PharmEasy</option>
+        </select><br><br>
+
+        <label for="medicine_name">Medicine Name:</label>
+        <input type="text" id="medicine_name" name="medicine_name" required><br><br>
+
+        <button type="submit">Scrape Price</button>
+    </form>
+
+    {% if price %}
+    <h2>Medicine Price:</h2>
+    <p>{{ price }}</p>
+    {% endif %}
+
+    <h3>NetMeds</h3>
+    <li>
+        cyclosporine -
+        <a href="#" class="medicine_link" data-medicine="cyclopyurin-100-capsule-10s"> cyclopyurin-100-capsule-10s</a><br>
+        
+    </li>
+    <li>
+    methotrexate -
+    <a href="#" class="medicine_link" data-medicine="folitrax-10mg-tablet-10-s"> folitrax-10mg-tablet-10-s</a>
+    </li>
+    <li>
+        prednisone -
+        <a href="#" class="medicine_link" data-medicine="paedisone-m-cream-15gm"> paedisone-m-cream-15gm</a>
+        </li>
+        <li>
+            mycophenolate -
+            <a href="#" class="medicine_link" data-medicine="cellcept-500mg-tablet-10-s"> cellcept-500mg-tablet-10-s</a>
+            </li>
+            <li>
+                azathioprine -
+                <a href="#" class="medicine_link" data-medicine="azr-50mg-tablet-10-s">azr-50mg-tablet-10-s</a>
+                </li>
+                <h3>PharmEasy</h3>
+                <li>
+                    cyclosporine -
+                    <a href="#" class="medicine_link" data-medicine="cyclophil-me-100mg-capsule-5-s-4816">cyclophil-me-100mg-capsule-5-s-4816</a><br>
+                    
+                </li>
+                <li>
+                methotrexate -
+                <a href="#" class="medicine_link" data-medicine="folitrax-7-5mg-strip-of-10-tablets-47763">folitrax-7-5mg-strip-of-10-tablets-47763</a>
+                </li>
+                <li>
+                    prednisone -
+                    <a href="#" class="medicine_link" data-medicine="prednison-drops-15ml-74412">prednison-drops-15ml-74412</a>
+                    </li>
+                    <li>
+                        mycophenolate -
+                        <a href="#" class="medicine_link" data-medicine="mycotero-500mg-tablet-10-s-234282">mycotero-500mg-tablet-10-s-234282</a>
+                        </li>
+                        <li>
+                            azathioprine -
+                            <a href="#" class="medicine_link" data-medicine="azaprin-50mg-strip-of-10-tablets-177534">azaprin-50mg-strip-of-10-tablets-177534</a>
+                            </li>
+    <script>
+        // Add event listeners to medicine links
+        document.querySelectorAll('.medicine_link').forEach(item => {
+            item.addEventListener('click', event => {
+                event.preventDefault();
+                const medicineName = item.getAttribute('data-medicine');
+                document.getElementById('medicine_name').value = medicineName;
+                
+            });
+        });
+    </script>
+</body>
+</html>
